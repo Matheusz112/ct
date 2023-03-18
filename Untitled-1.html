@@ -1,0 +1,658 @@
+
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="fontawesome/css/all.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <a href="#">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    CONTROLE DE VALIDADES
+  </a>
+
+  <ul>
+    <li>
+      <a href="Untitled-1.html">
+        <i class="material-icons">home</i>
+        
+      </a>
+    </li>
+    <li>
+      <a href="PAGLOGIN.html">
+       <i class="material-icons">image</i>
+      </a>
+      </li>
+    <li>
+      <a href="produtotable.html">
+     <i class="material-icons">note_add</i>
+      </a>
+      
+    </li>
+    <li>
+      <a href="#">
+        <i class="material-icons">note_add</i>
+      </a> 
+    </li>
+    <li>
+      <a href="#">
+        <i class="material-icons">person</i>
+      </a> 
+    </li>
+  </ul>
+
+
+
+
+
+<head>
+  <div id="camera"></div>
+
+  <div class="video-container">
+    <video autoplay loop muted>
+      <source src="11.mp4" type="video/mp4">
+      
+    </video>
+    
+    <video id="video" width="20" height="20"></video>
+    <script src="quagga.min.js"></script>
+      
+  </div>
+
+
+
+
+	<style>
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #262626;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  position: absolute;
+  top: 7%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+ul li {
+  list-style: none;
+  margin: 0 2px;
+}
+
+ul li a {
+  position: relative; 
+  display: block;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  background: #333;
+  border-radius: 50%;
+  font-size: 30px;
+  color: #666;
+  transition: .5s;
+}
+
+ul li a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 20%;
+  border-radius: 50%;
+  background: #ffee10;
+  transition: .5s;
+  transform: scale(.9);
+  z-index: -1;
+}
+
+ul li a:hover::before {
+  transform: scale(1.1);
+  box-shadow: 0 0 3px #ffee10;
+}
+
+ul li a:hover {
+  color: #ffee10;
+  box-shadow: 0 0 5px #ffee10;
+  text-shadow: 0 0 5px #ffee10;
+}
+
+
+
+a
+{
+  position: relative;
+  display: inline-block;
+  padding: 25px 30px;
+  margin: 0 20px;
+  color: #f3f3f3;
+  font-size: 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: 0.5s;
+  letter-spacing: 4px;
+ 
+}
+
+a span
+{
+  position: absolute;
+  display: block;
+}
+a span:nth-child(1)
+{
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #03e9f4);
+  animation: animate1 1s linear infinite;
+}
+@keyframes animate1
+{
+  0%
+  {
+    left: -100%;
+  }
+  50%, 100%
+  {
+    left: 100%;
+  }
+}
+a span:nth-child(2)
+{
+  top: -100px;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #03e9f4);
+  animation: animate2 1s linear infinite;
+  animation-delay: 0.25s;
+}
+@keyframes animate2
+{
+  0%
+  {
+    top: -100%;
+  }
+  50%, 100%
+  {
+    top: 100%;
+  }
+}
+a span:nth-child(3)
+{
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #03e9f4);
+  animation: animate3 1s linear infinite;
+  animation-delay: 0.5s;
+}
+@keyframes animate3
+{
+  0%
+  {
+    right: -100%;
+  }
+  50%, 100%
+  {
+    right: 100%;
+  }
+}
+a span:nth-child(4)
+{
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #03e9f4);
+  animation: animate4 1s linear infinite;
+  animation-delay: 0.75s;
+}
+@keyframes animate4
+{
+  0%
+  {
+    bottom: -100%;
+  }
+  50%, 100%
+  {
+    bottom: 100%;
+  }
+}
+
+
+
+
+
+
+
+
+img {
+  display: block;
+  margin: auto;
+}
+
+:root {
+
+--cor-azul: #17f1c2;
+--cor-hover: #1adfae;
+
+}
+
+
+.btn {
+
+padding:0.2em 1em;
+border-radius:50px;
+display:inline-block;
+
+}
+
+.btn-neon {
+border:4px solid var(--cor-azul);
+position: absolute;
+text-transform: capitalize;
+text-decoration:none;
+color: var(--cor-azul);
+background-color: transparent;
+text-align: center;
+font-size: 30px;
+font-family: 'open_sansregular';
+transition:0.4s;
+text-shadow: 0 0 0.125em rgba(0, 0, 0, 0.5), 0 0 0.25em currentColor;
+box-shadow: inset 0 0 0.5em 0 var(--cor-azul), 0 0 0.5em 0 var(--cor-azul);
+top: 0;
+left: 50%;
+transform: translateX(-50%);
+}
+
+
+
+
+
+
+
+
+
+.sua-classe {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgb(233, 224, 224);
+    font-size: 16px;
+    color:rgb(20, 20, 20);
+    border-radius: 5px;
+    font-size: 15px;
+    display: block;
+    margin: 10px auto;
+    width: 30%;
+    background-color: #ecf0f1;
+    background: white;
+}
+.sua-classe1 {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgb(233, 224, 224);
+    font-size: 16px;
+    color:rgb(20, 20, 20);
+    border-radius: 5px;
+    font-size: 15px;
+    display: block;
+    margin: 10px auto;
+    width: 30%;
+    background-color: #ecf0f1;
+    background: white;
+}
+.nome{
+
+  color: white;
+
+}
+.video-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -100;
+}
+
+video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+
+}
+.cont {
+  color: white;
+  text-align: center;
+  margin-top: 10px;
+
+  font-size: 25px;
+  border: #ecf0f1;
+
+  padding: 30px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.conts {
+  color: white;
+  text-align: center;
+  margin-top: 10px;
+  margin: 10px;
+}
+.nome-produto {
+  background-color: rgba(255, 255, 255, 0.788);
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgb(233, 224, 224);
+    font-size: 16px;
+    color:rgb(20, 20, 20);
+    border-radius: 5px;
+    font-size: 15px;
+    display: block;
+    margin: 10px auto;
+    width: 30%;
+ border-color: #1d3ae0;
+
+  
+  }
+
+  .btn-select-image {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgb(233, 224, 224);
+    font-size: 16px;
+    color:rgb(236, 236, 236);
+    border-radius: 5px;
+    font-size: 15px;
+    display: block;
+    margin: 10px auto;
+    width: 30%;
+    background: linear-gradient(to right, #1d92e0, #9ab929);
+}
+.btn-select-image:hover {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgb(233, 224, 224);
+    font-size: 16px;
+    color:rgb(236, 236, 236);
+    border-radius: 5px;
+    font-size: 15px;
+    display: block;
+    margin: 10px auto;
+    width: 30%;
+    background: linear-gradient(to right, #1d3ae0, #5eb929f3);
+    cursor: pointer;
+}
+.btn-select-image1 {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgb(233, 224, 224);
+    font-size: 16px;
+    color:rgb(236, 236, 236);
+    border-radius: 5px;
+    font-size: 15px;
+    display: block;
+    margin: 2px auto;
+    width: 30%;
+    background: linear-gradient(to right, #1de085, #57b929);
+}
+.btn-select-image1:hover {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgb(233, 224, 224);
+    font-size: 16px;
+    color:rgb(236, 236, 236);
+    border-radius: 5px;
+    font-size: 15px;
+    display: block;
+    margin: 2px auto;
+    width: 30%;
+    background: linear-gradient(to right, #4ae01d, #07f76b);
+
+    cursor: pointer;
+}
+
+
+.neon-blue{
+  position: relative;
+  display: block;
+  padding: 5px;
+
+  color:#4bc072;
+  font-family:'open_sansbold';
+  text-decoration: none;
+  transition: 0.4s;
+  letter-spacing: 4px;
+  overflow: hidden;
+  margin: 2px auto;
+  width: 30%;
+  border: 2px solid #0ae67f;
+  border-radius:5px;
+}
+.neon-blue:hover{
+  background: #0ae65e;
+  color: #000;
+  box-shadow: 0 0 10px #0ae65e, 0 0 40px #0ae692, 0 0 70px #0ae6d4;
+}
+.neon-blue:active{
+   color:#0ae68a; 
+   background: #000000;
+}
+.btn-2 {
+  background-color: rgba(255, 255, 255, 0.788);
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgb(233, 224, 224);
+    font-size: 16px;
+    color:rgb(20, 20, 20);
+    border-radius: 5px;
+    font-size: 15px;
+    display: block;
+    margin: 10px auto;
+    width: 30%;
+    border-color: #1d3ae0;
+}
+
+	</style>
+</head>
+<BR>
+  <BR>
+<body>
+	
+	<form id="cadastro-produto">
+    <input class="nome-produto" type="text" id="nome-produtoO" placeholder="Nome do Produto" required>
+    <input class="nome-produto" type="number" id="Quantidade" placeholder="Quantidade" required>
+    <input class="nome-produto" type="number" id="codigo-barras" placeholder="Código de Barras:"required >
+    <button class="nome-produto" id="btn-escanear">ESCANEAR CODIGO DE BARRAS </button>
+    <div id="leitor"></div>
+    <input class="nome-produto" type="date" id="vencimento" placeholder="Data de vencimento do produto:" required>
+    <button onclick="iniciarLeitura()">Escanear código</button>
+    
+
+    <select class="nome-produto">
+      <option value="valor1">CORDEIRO(RIO GRANDE)</option>
+      <option value="valor2">CORDEIRO(JÕAO ANTUNES)</option>
+      <option value="valor3">CORDEIRO (SAGRADO CORAÇÂO)</option>
+    
+    </select>  
+    <select class="nome-produto">
+      <option value="valor1">BEBIDAS</option>
+      <option value="valor2">FRIO</option>
+      <option value="valor3">PESADO</option>
+      <option value="valor4">DOCES</option>
+      <option value="valor5">LIMPEZAS</option>
+      <option value="valor6">AÇOUGUE</option>
+      <option value="valor7">NL(ART FRUT)</option>
+      <option value="valor8">OUTRA SESSÃO(NEHUMA DELAS)</option>
+    
+      
+      <div id="interactive" class="viewport"></div>
+		<div class="botoes">
+			<input type="submit" value="Enviar" class="neon-blue">
+			<input type="reset" value="Limpar" class="btn-select-image">
+		</div>
+	</form>
+  <script src="quagga.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+	<script>
+
+
+var leitor = document.getElementById('leitor');
+
+function iniciarLeitura() {
+  navigator.mediaDevices.enumerateDevices()
+  .then(function(devices) {
+    var videoDevices = [];
+    devices.forEach(function(device) {
+      if (device.kind == 'videoinput') {
+        videoDevices.push(device.deviceId);
+      }
+    });
+    var constraints = {
+      video: {
+        deviceId: videoDevices[videoDevices.length - 1],
+        facingMode: { exact: "environment" },
+        width: { ideal: 640 },
+        height: { ideal: 480 }
+      }
+    };
+    return navigator.mediaDevices.getUserMedia(constraints);
+  })
+  .then(function(stream) {
+    Quagga.init({
+      inputStream: {
+        name: "Live",
+        type: "LiveStream",
+        target: leitor,
+        constraints: {
+          width: { ideal: 640 },
+          height: { ideal: 480 },
+          facingMode: "environment"
+        }
+      },
+      decoder: {
+        readers: ["ean_reader"]
+      }
+    }, function(err) {
+      if (err) {
+        console.log(err);
+        return
+      }
+      Quagga.start();
+    });
+
+    Quagga.onDetected(function(result) {
+      console.log(result);
+      Quagga.stop();
+      alert(result.codeResult.code);
+    });
+  })
+  .catch(function(error) {
+    console.error('Erro ao acessar a câmera: ', error);
+  });
+}
+
+
+
+
+
+		document.getElementById('cadastro-produto').addEventListener('submit', (event) => {
+			event.preventDefault();
+
+			const nomeProduto = document.getElementById('nome-produtoO').value;
+			const quantidade = document.getElementById('Quantidade').value;
+			const codigoBarras = document.getElementById('codigo-barras').value;
+			const vencimento = document.getElementById('vencimento').value;
+
+	 let data = new Date();
+  let mes_atual = data.toLocaleString('default', { month: 'long' });
+
+  // Criar a pasta com o nome do mês atual, caso ainda não exista
+  const fs = require('fs');
+  let pasta_mes = './' + mes_atual + '/';
+  if (!fs.existsSync(pasta_mes)) {
+      fs.mkdirSync(pasta_mes);
+  }
+
+  // Salvar os dados em um arquivo na pasta do mês atual
+  let dados = `PRODUTO: ${nomeProduto}, QUANTIDADE: ${quantidade}, CÓDIGO DE BARRAS: ${codigoBarras}, VENCIMENTO: ${vencimento}`;
+  let caminho_arquivo = pasta_mes + 'dados.txt';
+  fs.writeFile(caminho_arquivo, dados, function (err) {
+    if (err) throw err;
+    console.log('Dados salvos com sucesso!');
+  });
+		});
+
+
+
+
+    const meuBotao = document.querySelector('.btn-2');
+
+    const video = document.getElementById("video");
+      const botaoCapturar = document.getElementById("botao-capturar");
+      let videoStream;
+
+      botaoCapturar.addEventListener("click", function() {
+
+          // Inicializa o Quagga
+  Quagga.init({
+    inputStream: {
+      name: "Live",
+      type: "LiveStream",
+      target: document.querySelector('#interactive'),
+      constraints: {
+        facingMode: "environment"
+      },
+    },
+    decoder: {
+      readers: ["ean_reader"]
+    },
+  }, function(err) {
+    if (err) {
+      console.error("Erro ao inicializar o Quagga: ", err);
+      return;
+    }
+    console.log("Quagga inicializado com sucesso!");
+
+    // Começa a ler o código de barras
+    Quagga.start();
+  });
+
+  // Registra um listener para a detecção de código de barras
+  Quagga.onDetected(function(result) {
+    console.log("Código de barras detectado: ", result.codeResult.code);
+    alert("Código de barras detectado: ", result.codeResult.code)
+  });
+       
+        });
+
+
+
+  
+
+	</script>
+</body>
+</html>
+
+
+
+
+

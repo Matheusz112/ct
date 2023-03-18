@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Planilha de Informações</title>
+  <style>
+    #tabelaInformacoes {
+      border-collapse: collapse;
+    }
+    #tabelaInformacoes th, #tabelaInformacoes td {
+      padding: 5px;
+      border: 1px solid black;
+    }
+    #tabelaInformacoes tr:not(:first-child) {
+      border-top: none;
+    }
+    #tabelaInformacoes td:not(:first-child) {
+      border-left: none;
+    }
+  </style>
+</head>
+<body>
+    <form>
+        <label for="nome">PRUDUTO:</label>
+        <input type="text" id="nome" name="PRUDUTO"><br><br>
+        <label for="idade">QUANTIDADE:</label>
+        <input type="text" id="idade" name="QUANTIDADE"><br><br>
+        <label for="sexo">CODIGO DE BARRAS:</label>
+        <input type="text" id="sexo" name="CODIGO DE BARRAS"><br><br>
+        <input type="button" value="Salvar" onclick="salvarInformacoes()">
+      </form>
+  <table id="tabelaInformacoes">
+    <thead>
+      <tr>
+        <th>PRODUTO</th>
+        <th>QUANTIDADE</th>
+        <th>CODIGO DE BARRAS</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  <script>
+    function salvarInformacoes() {
+      const nome = document.getElementById("nome").value;
+      const idade = document.getElementById("idade").value;
+      const sexo = document.getElementById("sexo").value;
+
+      const tabela = document.getElementById("tabelaInformacoes");
+      const linha = tabela.insertRow(-1);
+      const celulaNome = linha.insertCell(0);
+      const celulaIdade = linha.insertCell(1);
+      const celulaSexo = linha.insertCell(2);
+
+      celulaNome.innerHTML = nome;
+      celulaIdade.innerHTML = idade;
+      celulaSexo.innerHTML = sexo;
+
+      // Adiciona uma linha separadora após cada item
+      const linhaSeparadora = tabela.insertRow(-1);
+      const celulaSeparadora = linhaSeparadora.insertCell(0);
+      celulaSeparadora.colSpan = 3;
+      celulaSeparadora.innerHTML = "<hr>";
+
+    }
+  </script>
+
+
+
+</body>
+</html>

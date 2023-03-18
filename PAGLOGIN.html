@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<link rel="stylesheet" href="fontawesome/css/all.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<span class="fa-discord"></span>
+
+
+<ul>
+  <li>
+    <a href="Untitled-1.html">
+      <i class="fa-solid fa-house"></i>
+      
+    </a>
+  </li>
+  <li>
+    <a href="#">
+      <i class="fa-solid fa-image"></i>
+    </a>
+    </li>
+  <li>
+    <a href="produtotable.html">
+     <i class="fa-solid fa-file-csv"></i>
+    </a>
+    
+  </li>
+  <li>
+    <a href="#">
+      <i class="fa-regular fa-file-powerpoint"></i>
+    </a> 
+  </li>
+  <li>
+    <a href="#">
+      <i class="material-icons">person</i>
+    </a> 
+  </li>
+</ul>
+<html lang="pt-br">
+  
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Extrair texto de imagem</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <div class="video-container">
+    <video autoplay loop muted>
+      <source src="11.mp4" type="video/mp4">
+      
+    </video>
+    
+    <video id="video" width="20" height="20"></video>
+    <script src="quagga.min.js"></script>
+      
+  </div>
+<BR>
+    <div class="container">
+        <div class="left">
+            <input type="file" class="input-image">
+            <BR>
+              <BR>
+                <BR>
+                  <BR>
+            <button class="btnAdcImagens">Inserir Imagem</button>
+            <textarea class="output-text" disabled></textarea>
+        </div>
+        <div class="right">
+            <img src="" alt="" class="preview"><br>
+            <div class="barraProgresso"></div>
+
+        </div>
+    </div>
+
+    <style>
+
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #262626;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+ul li {
+  list-style: none;
+  margin: 0 15px;
+}
+
+ul li a {
+  position: relative; 
+  display: block;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 63px;
+  background: #333;
+  border-radius: 50%;
+  font-size: 30px;
+  color: #666;
+  transition: .5s;
+}
+
+ul li a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #ffee10;
+  transition: .5s;
+  transform: scale(.9);
+  z-index: -1;
+}
+
+ul li a:hover::before {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #ffee10;
+}
+
+ul li a:hover {
+  color: #ffee10;
+  box-shadow: 0 0 5px #ffee10;
+  text-shadow: 0 0 5px #ffee10;
+ 
+}
+a span
+{
+  position: absolute;
+  display: block;
+}
+a span:nth-child(1)
+{
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #03e9f4);
+  animation: animate1 1s linear infinite;
+}
+@keyframes animate1
+{
+  0%
+  {
+    left: -100%;
+  }
+  50%, 100%
+  {
+    left: 100%;
+  }
+}
+a span:nth-child(2)
+{
+  top: -100px;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #03e9f4);
+  animation: animate2 1s linear infinite;
+  animation-delay: 0.25s;
+}
+@keyframes animate2
+{
+  0%
+  {
+    top: -100%;
+  }
+  50%, 100%
+  {
+    top: 100%;
+  }
+}
+a span:nth-child(3)
+{
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #03e9f4);
+  animation: animate3 1s linear infinite;
+  animation-delay: 0.5s;
+}
+@keyframes animate3
+{
+  0%
+  {
+    right: -100%;
+  }
+  50%, 100%
+  {
+    right: 100%;
+  }
+}
+a span:nth-child(4)
+{
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #03e9f4);
+  animation: animate4 1s linear infinite;
+  animation-delay: 0.75s;
+}
+@keyframes animate4
+{
+  0%
+  {
+    bottom: -100%;
+  }
+  50%, 100%
+  {
+    bottom: 100%;
+  }
+}
+
+
+
+
+.video-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -100;
+}
+
+video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+
+}
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #000000;
+}
+
+body{
+    background-color: #17cf54;
+}
+
+.container{
+    align-items: center;
+    padding: 16px;
+    display: flex;
+    gap: 32px;
+}
+
+.left{
+    flex: 2;
+}
+
+.right{
+    flex: 1;
+}
+.input-image{
+    display: none;
+}
+
+.output-text{
+    display: block;
+    width: 100%;
+    min-height: 500px;
+    min-width: 20px;
+    font-size: 1.2rem;
+}
+.btnAdcImagens{
+    padding: 8px;
+    font-size: 1.1rem;
+    border: none;
+    color: #e3e3e3;
+    background: linear-gradient(to right, #02d5fa, #4707f7);
+
+    left: 50px;
+    width: 100%;
+
+}
+
+.btnAdcImagens:hover{
+    padding: 8px;
+    font-size: 1.1rem;
+    border: none;
+    color: #e3e3e3;
+    background: linear-gradient(to right, #0276fa, #ab07f7);
+    cursor: pointer;
+    left: 50px;
+    width: 100%;
+
+}
+
+.preview{
+    display: block;
+    width: 100%;
+    color: #e3e3e3;
+}
+
+.barraProgresso{
+    transition: width;
+
+    
+
+    
+  justify-content: flex-start;
+  border-radius: 100px;
+  align-items: center;
+  position: relative;
+  padding: 0 5px;
+  display: flex;
+  width: 0;
+    height: 20px;
+    background: linear-gradient(to right, #00ff4c, #00ff95); 
+    z-index: -1;
+    mix-blend-mode: lighten;
+}
+
+.progress-value {
+  
+  box-shadow: 0 10px 40px -10px #3f3b3b;
+  border-radius: 100px;
+
+  height: 30px;
+  width: 0;
+  background: linear-gradient(to right, #ff00de, #00eaff);
+}
+
+@keyframes load {
+  0% { width: 0; }
+  100% { width: 68%; }
+}
+    </style>
+    <script src='https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js'></script>
+    <script src="script.js"></script>
+    <script>
+
+const inputImage = document.querySelector('.input-image');
+const btnAdcImage = document.querySelector('.btnAdcImagens');
+const saidaTexto  = document.querySelector('.output-text');
+const imagePreview = document.querySelector('.preview');
+const barraProgresso = document.querySelector('.barraProgresso');
+
+function controlarProgresso(n){
+    barraProgresso.style.width = `${n}%`; 
+}
+
+async function extrairTexto(img){
+  const worker = Tesseract.createWorker({
+    logger: function(m){
+        console.log(m);
+        controlarProgresso(m.progress * 100);
+    }
+  });
+  
+   await worker.load();
+   await worker.loadLanguage('eng+por');
+   await worker.initialize('eng+por');
+   const { data: { text } } = await worker.recognize(img);
+   saidaTexto.value = text;
+   await worker.terminate();
+
+}
+
+btnAdcImage.addEventListener('click' , function(){
+    inputImage.click();
+})
+
+inputImage.addEventListener('change' , function(){
+    let fileImage = inputImage.files[0];
+
+    imagePreview.src = URL.createObjectURL(fileImage);
+
+    try{
+      extrairTexto(fileImage);
+
+    }catch(e){
+        console.log('erro' , e);
+    }
+
+;})
+
+
+    </script>
+</body>
+</html>
